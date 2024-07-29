@@ -1,0 +1,72 @@
+@if(isLoginView){
+    <div class="container mt-5">
+        <div class="card">
+          <div class="card-body">
+            <form>
+                <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Login</h3>
+
+                <!-- Email input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                <input name="username" [(ngModel)]="userLoginObj.username" type="text" id="form2Example1" class="form-control" />
+                <label class="form-label" for="form2Example1">Username</label>
+                </div>
+            
+                <!-- Password input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                <input name="password" [(ngModel)]="userLoginObj.password" type="password" id="form2Example2" class="form-control" />
+                <label class="form-label" for="form2Example2">Password</label>
+                </div>
+            
+                <!-- Submit button -->
+                <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4" (click)="onLogin()">Sign in</button>
+            
+                <!-- Register buttons -->
+                <div class="text-center">
+                <p>Not a member? <a class="link-info" (click)="isLoginView = false">Register</a></p>
+                </div>
+            </form>
+          </div>
+        </div>
+    </div>
+} @else {
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <form>
+            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Register</h3>
+
+            <!-- Email input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input name="email" [(ngModel)]="userRegisterObj.email" type="email" id="form2Example1" class="form-control" />
+                <label class="form-label" for="form2Example1">Email address</label>
+              </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input name="username" [(ngModel)]="userRegisterObj.username" type="text" id="form2Example2" class="form-control" />
+              <label class="form-label" for="form2Example2">Username</label>
+            </div>
+          
+            <!-- Password input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input name="password" [(ngModel)]="userRegisterObj.password"  type="password" id="form2Example3" class="form-control" />
+              <label class="form-label" for="form2Example3">Password</label>
+            </div>
+
+            <!-- Password input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input name="password2" [(ngModel)]="userRegisterObj.password2"  type="password" id="form2Example4" class="form-control" />
+              <label class="form-label" for="form2Example4">Confirm Password</label>
+            </div>
+          
+            <!-- Submit button -->
+            <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4" (click)="onRegister()">Register</button>
+          
+            <!-- Register buttons -->
+            <div class="text-center">
+              <p>Already have an account? <a class="link-info" (click)="isLoginView = true">Login here</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+}

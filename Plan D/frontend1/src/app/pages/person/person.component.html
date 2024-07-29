@@ -1,0 +1,57 @@
+<div class="mat-elevation-z8">
+    <div class="button-container">
+      <div><h1>Personen</h1></div>
+      <span class="spacer"></span>
+      <a routerLink="/new-person" class="btn btn-primary">Create new person</a>
+    </div>
+    <br>
+    <table mat-table [dataSource]="dataSource">
+  
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef id="header"> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+      
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef id="header"> Name </th>
+        <td mat-cell *matCellDef="let element"> 
+          <a routerLink="/person-detail/{{element.id}}">{{(element.name)}}</a>
+        </td>
+      </ng-container>
+      
+      <!-- Ranks Column -->
+      <ng-container matColumnDef="rank">
+        <th mat-header-cell *matHeaderCellDef id="header"> Rank </th>
+        <td mat-cell *matCellDef="let element"> {{element.rank}} </td>
+      </ng-container>
+
+      <!-- Ranks Column -->
+      <ng-container matColumnDef="stationed_currently">
+        <th mat-header-cell *matHeaderCellDef id="header"> Stationed Currently </th>
+        <td mat-cell *matCellDef="let element"> {{getStationedCurrently(element)}} </td>
+      </ng-container>
+      
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <br>
+  </div>
+  <div class="container d-flex justify-content-center align-items-center full-height">
+    <nav aria-label="Search results pages">
+      <ul class="pagination">
+        @if(previousPage){
+          <li class="page-item"><a class="page-link btn btn-primary" (click)="previous()">Previous</a></li>
+        } @else {
+          <li class="page-item disabled" disabled><a class="page-link btn btn-primary" (click)="previous()" >Previous</a></li>
+        }
+        @if(nextPage){
+          <li class="page-item"><a class="page-link btn btn-primary" (click)="next()">Next</a></li>
+        } @else {
+          <li class="page-item disabled"><a class="page-link btn btn-primary" (click)="next()">Next</a></li>
+        }
+        
+      </ul>
+    </nav>
+  </div>

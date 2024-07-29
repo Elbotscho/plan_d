@@ -1,0 +1,35 @@
+/* Füge bei Bedarf CSS-Stile hinzu */
+.mat-elevation-z8 {
+    margin: 20px;
+  }
+
+.button-container{
+  display: flex;
+  align-items: center; /* Zentriert die Items vertikal */
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+tr:nth-child(odd) {
+  background-color: rgb(240, 240, 240); /* Hellgrau für ungerade Spalten */
+}
+
+/* Gerade Spalten */
+tr:nth-child(even) {
+  background-color: white; /* Dunkelgrau für gerade Spalten */
+}
+
+#header{
+  background-color: rgb(184, 184, 184);
+}
+
+.download-button{
+  padding: 1.5em;
+}
+
+h1{
+  margin-top: 1em;
+  margin-left: 1em;
+}

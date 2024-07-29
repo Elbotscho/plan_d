@@ -1,0 +1,32 @@
+<mat-card *ngIf="!isLoading && fleet">
+    <mat-card-header>
+      <mat-card-title>{{ fleet.name }}</mat-card-title>
+    </mat-card-header>
+    <br>
+    <mat-card-content>
+      <div class="detail-section">
+        <p><strong>Admiral:</strong> 
+          <a routerLink="/person-detail/{{fleet.admiral.id}}"> {{ fleet.admiral.name }}</a>
+          </p>
+        <p><strong>Size:</strong> {{ fleet.size }}</p>
+        <p><strong>Ranks:</strong> {{ fleet.ranks }}</p>
+        <p><strong>Ships:</strong> </p>
+        <mat-card *ngFor="let ship of fleet.ship" id="card">
+            <mat-card-content>
+                <mat-card-title>
+                  <a routerLink="/ships-detail/{{ship.id}}">{{ ship.name }}</a>
+                </mat-card-title>
+            </mat-card-content>
+          </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card *ngIf="isLoading">
+    <mat-card-content>Loading...</mat-card-content>
+  </mat-card>
+  
+  <mat-card *ngIf="!fleet">
+    <mat-card-content>Flotte nicht gefunden.</mat-card-content>
+  </mat-card>
+  <router-outlet></router-outlet>

@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-header">
+        <h3>Add new Ship</h3>
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="form-group my-3">
+            <label for="exampleFormControlInput1">Ship Name</label>
+            <input name="shipName" [(ngModel)]="shipObj.shipName" type="text" class="form-control" id="exampleFormControlInput1">
+          </div>
+          <div class="form-group my-3">
+            <label for="exampleFormControlSelect1">Select Fleet</label>
+            <select name="fleet" [(ngModel)]="shipObj.fleet" class="form-control" id="exampleFormControlSelect1">
+              <option *ngFor="let fleet of fleets" [value]="fleet.id">{{fleet.name}}</option>        
+            </select>
+          </div>
+          <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block my-3" (click)="add()">Add Ship</button>
+        </form>
+      </div>
+    </div>
+  </div>

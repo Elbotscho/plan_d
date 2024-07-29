@@ -1,0 +1,32 @@
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-header">
+        <h3>Add new Person</h3>
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="form-group my-3">
+            <label for="exampleFormControlInput1">Person Name</label>
+            <input name="name" [(ngModel)]="personObj.name" type="text" class="form-control" id="exampleFormControlInput1">
+          </div>
+          <div class="form-group my-3">
+            <label for="exampleFormControlSelect1">Select Rank</label>
+            <select name="rank" [(ngModel)]="personObj.rank" class="form-control" id="exampleFormControlSelect1">
+              <option>Admiral</option>      
+              <option>Commander</option>   
+              <option>Captain</option>   
+              <option>Lieutenant</option>   
+              <option>Recruit</option>
+            </select>
+          </div>
+          <div class="form-group my-3">
+            <label for="exampleFormControlSelect1">Select Ship</label>
+            <select name="stationed_currently" [(ngModel)]="personObj.stationed_currently" class="form-control" id="exampleFormControlSelect1">
+              <option *ngFor="let ship of ships" [value]="ship.id">{{ship.name}}</option>        
+            </select>
+          </div>
+          <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block my-3" (click)="add()">Add Person</button>
+        </form>
+      </div>
+    </div>
+  </div>

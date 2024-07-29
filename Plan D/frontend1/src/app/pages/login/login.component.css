@@ -1,0 +1,21 @@
+/* Add this to your global styles.css or component's styles */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Changed from center to flex-start */
+  }
+  
+  .card {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }  
+
+  .my-custom-snackbar {
+    margin: 0 !important;
+    position: absolute;
+    right: 25px;
+    top: 60px;
+  }

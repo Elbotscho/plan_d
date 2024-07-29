@@ -1,0 +1,26 @@
+mat-card {
+  margin: 20px;
+}
+
+mat-card-title {
+  font-size: 1.5em;
+}
+
+mat-expansion-panel-header {
+  background-color: #f1f1f1;
+  font-size: 1.2em; /* Schriftgröße anpassen */
+}
+
+mat-expansion-panel {
+  width: 100%;
+  max-width: 800px; /* Maximalbreite anpassen */
+}
+
+#card {
+  font-size: 1em; /* Schriftgröße in der Liste anpassen */
+  border-radius: 8px; /* Optionale Rundung der Ecken */
+  padding: 16px; /* Optionale Innenabstände */
+  margin: 16px; /* Optionale Außenabstände */
+  border: 1px solid #ddd; /* Optionale Randfarbe */
+  background-color: #fff; /* Optionale Hintergrundfarbe */
+}

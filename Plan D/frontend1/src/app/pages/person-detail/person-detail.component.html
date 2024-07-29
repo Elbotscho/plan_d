@@ -1,0 +1,35 @@
+<mat-card *ngIf="!isLoading && person">
+  <mat-card-header>
+    <mat-card-title>{{ person.name }}</mat-card-title>
+  </mat-card-header>
+  <br>
+  <mat-card-content>
+    <div class="detail-section">
+      <p><strong>Rank:</strong> {{ person.rank }}</p>
+      <p><strong>Stationed Currently:</strong> 
+        <mat-card id="card">
+          <mat-card-content>
+              <mat-card-title>
+                <a routerLink="/ships-detail/{{person.stationed_currently.id}}"> {{ person.stationed_currently.name }}</a>
+              </mat-card-title>
+          </mat-card-content>
+        </mat-card>
+      </p>
+      <p><strong>Stationed Past:</strong>
+        <mat-card *ngFor="let ship of person.stationed_past" id="card">
+          <mat-card-content>
+            {{ship.name}}
+          </mat-card-content>
+        </mat-card>
+      </p>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="isLoading">
+  <mat-card-content>Loading...</mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="!person">
+  <mat-card-content>Flotte nicht gefunden.</mat-card-content>
+</mat-card>
