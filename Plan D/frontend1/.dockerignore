@@ -1,0 +1,8 @@
+**/.git
+**/.editorconfig
+**/.vscode
+**/README.md
+/node_modules
+/docs
+*.zip
+**/dist

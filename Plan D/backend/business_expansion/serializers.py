@@ -1,7 +1,6 @@
 # serializers.py
 from rest_framework import serializers
 from .models import Fleet, Ship, Person
-from django.contrib.auth.models import User
 
 ### Foreign-Key Informations
 

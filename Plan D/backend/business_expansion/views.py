@@ -1,9 +1,7 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.pagination import PageNumberPagination
 from django.core.cache import cache
-from django.contrib.auth.decorators import login_required
 from .models import Fleet, Ship, Person
 from .serializers import *
 from .permissions import *
@@ -12,7 +10,7 @@ from rest_framework.decorators import api_view
 
 class FleetViewSet(viewsets.ViewSet):
     serializer_class = FleetSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [CustomIsAuthenticated]
 
     def list(self, request):
         cache_key = 'fleet_list'
@@ -31,6 +29,7 @@ class FleetViewSet(viewsets.ViewSet):
         serializer = SaveFleetSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
+            cache.delete('fleet_list')
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -44,7 +43,7 @@ class FleetViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
 class ShipViewSet(viewsets.ViewSet):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [CustomIsAuthenticated]
 
     def list(self, request):
         cache_key = 'ship_list'
@@ -81,11 +80,11 @@ class PersonPagination(PageNumberPagination):
     max_page_size = 1000
 
 class PersonViewSet(viewsets.ViewSet):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [CustomIsAuthenticated]
     pagination_class = PersonPagination
 
     def list(self, request):
-        queryset = Person.objects.all()
+        queryset = Person.objects.select_related('stationed_currently').all()
         paginator = self.pagination_class()
         page = paginator.paginate_queryset(queryset, request)
         if page is not None:
